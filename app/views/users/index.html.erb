@@ -1,4 +1,32 @@
-<h1> Text </h1>
+<h1> Welcome <%= @user.first_name %> </h1>
 
-<%= @user.last.first_name %>
-<%= @user.last.email %>
+
+<p>
+  <%= @user.first_name %>
+  <%= @user.email %></br>
+</p>
+<p>
+Friends:
+  <% @user.friends.each do |fr| %>
+    <div> <%= fr.first_name %> </div>
+  <% end %>
+</p>
+
+<% @friend_requests.each do |friends| %>
+  <% if friends.accepted_request %>
+    <div>
+      Accepted:
+      <%= link_to friends.friend.last_name, user_path(friends) %>
+    </div>
+  <% else %>
+    <div>
+      Not Accepted:
+      <%= link_to friends.friend.first_name, user_path(friends) %>
+    </div>
+  <% end %>
+<% end %>
+
+<div>
+    You are currently logged in as <%= @user.first_name %></br>
+    <%= link_to "Logout here", destroy_user_session_path, method: :delete %>
+</div>
