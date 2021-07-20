@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  has_many :friendships
+  has_many :friends, through: :friendships, foreign_key: "user_id"
 end
