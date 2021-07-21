@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
-    @friend_requests = @user.friendships
+    @friends = @user.friendships
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @friends = @user.friendships
   end
 end

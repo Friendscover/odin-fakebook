@@ -8,5 +8,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
   has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships
+  has_many :friends, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
+
+  # @book = @author.books.build(published_at: Time.now,
+  # book_number: "A12345")
 end
