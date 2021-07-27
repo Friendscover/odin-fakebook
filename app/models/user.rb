@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  has_many :friendships, dependent: :destroy
+  has_many :friendships, inverse_of: :user, dependent: :destroy
   has_many :friends, class_name: 'Friendship', foreign_key: 'friend_id', dependent: :destroy
 
   # @book = @author.books.build(published_at: Time.now,

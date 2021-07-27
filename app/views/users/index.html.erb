@@ -11,7 +11,7 @@
 
 <h3> Friends: </h3>
 
-<% @friends.each do |f| %>
+<% @user.friendships.each do |f| %>
   <% if f.accepted_request == true %>
     <div><%= link_to f.friend.first_name, user_path(f.friend_id) %></div>
   <% end %>
@@ -20,14 +20,29 @@
 
 <h3> Friend Requests: </h3>
 
-  <% @friends.each do |f| %>
+  <% @user.friendships.each do |f| %>
     <% if f.accepted_request == false %>
       <div><%= link_to f.friend.first_name, user_path(f.friend_id) %> </div>
     <% end %>
   <% end %>
 <h3>
-
-<div>
+  <div>
     You are currently logged in as <%= @user.first_name %></br>
     <%= link_to "Logout here", destroy_user_session_path, method: :delete %>
-</div>
+  </div>
+</h3>
+
+<h3> Latest Users </h3>
+  <div>
+    <% @users.each do |u| %>
+      <%= link_to u.first_name, user_path(u) %>
+      <%= link_to u.last_name, user_path(u) %></br>
+      <% next if @friend_ids.include?(u.id) %>
+        <%= form_with model: [ @user, @user.friendships.build ]  do |form| %>
+            <%= form.hidden_field :accepted_request, value: false %>
+            <%= form.hidden_field :friend_id, value: u.id %>
+            <%= form.submit "Send Friend Request" %>
+      <% end %>
+    <% end %>
+  </div>
+</h3>

@@ -5,20 +5,8 @@
 <% end %>
 
 <h3> Friends: </h3>
-
-<% @friends.each do |f| %>
+<% @user.friendships.each do |f| %>
   <% if f.accepted_request == true %>
     <div><%= link_to f.friend.first_name, user_path(f.friend_id) %></div>
   <% end %>
 <% end %>
-
-
-<h3> Friend Requests: </h3>
-
-  <% @friends.each do |f| %>
-    <% if f.accepted_request == false %>
-      <div> <%= link_to f.friend.first_name, user_path(f.friend_id) %> </div>
-    <% end %>
-  <% end %>
-<h3>
-

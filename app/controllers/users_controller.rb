@@ -3,11 +3,12 @@ class UsersController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
-    @friends = @user.friendships
+    @users = User.last(20)
+
+    @friend_ids = @user.friendships.map { |f| f.friend_id }
   end
 
   def show
     @user = User.find(params[:id])
-    @friends = @user.friendships
   end
 end
