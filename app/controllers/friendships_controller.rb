@@ -7,11 +7,20 @@ class FriendshipsController < ApplicationController
     @user = User.find(current_user.id)
     @friendship = @user.friendships.create(friendships_params)
 
-    if @friendship.save
-      redirect_to root_path
+    redirect_to root_path
+  end
+
+  def update
+    @friendship = Friendship.find(params[:id])
+
+    if params[:commit] == 'Accept'
+      @friendship.accepted_request = true
+      @friendship.save
     else
-      redirect_to root_path
+      Friendship.destroy(params[:id])
     end
+
+    redirect_to root_path
   end
 
   private

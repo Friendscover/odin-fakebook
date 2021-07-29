@@ -20,11 +20,18 @@
 
 <h3> Friend Requests: </h3>
 
-  <% @user.friendships.each do |f| %>
-    <% if f.accepted_request == false %>
-      <div><%= link_to f.friend.first_name, user_path(f.friend_id) %> </div>
-    <% end %>
+<% @user.friendships.each do |f| %>
+  <% if f.accepted_request == false %>
+    <div>
+      <%= link_to f.friend.first_name, user_path(f.friend_id) %> 
+        <%= form_with(url: friendship_path(f.id), method: "patch") do |form| %>
+          <%= form.submit "Accept" %>
+          <%= form.submit "Decline" %>
+        <% end %>
+    </div>
   <% end %>
+<% end %>
+
 <h3>
   <div>
     You are currently logged in as <%= @user.first_name %></br>
@@ -37,7 +44,7 @@
     <% @users.each do |u| %>
       <%= link_to u.first_name, user_path(u) %>
       <%= link_to u.last_name, user_path(u) %></br>
-      <% next if @friend_ids.include?(u.id) %>
+      <% next if @friend_ids.include?(u.id) || @user.id == u.id %>
         <%= form_with model: [ @user, @user.friendships.build ]  do |form| %>
             <%= form.hidden_field :accepted_request, value: false %>
             <%= form.hidden_field :friend_id, value: u.id %>

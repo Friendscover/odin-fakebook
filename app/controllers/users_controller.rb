@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
     @users = User.last(20)
 
-    @friend_ids = @user.friendships.map { |f| f.friend_id }
+    @friend_ids = @user.friendships.map(&:friend_id)
   end
 
   def show
