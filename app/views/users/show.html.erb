@@ -4,9 +4,4 @@
   <h1> This is the profile of <%= @user.first_name %> </h1>
 <% end %>
 
-<h3> Friends: </h3>
-<% @user.friendships.each do |f| %>
-  <% if f.accepted_request == true %>
-    <div><%= link_to f.friend.first_name, user_path(f.friend_id) %></div>
-  <% end %>
-<% end %>
+<%= render "shared/friendships", :user => @user %>
