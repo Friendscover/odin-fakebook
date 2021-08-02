@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :friendships, inverse_of: :user, dependent: :destroy
   has_many :friends, through: :friendships
 
+  has_many :posts
+
   # @book = @author.books.build(published_at: Time.now,
   # book_number: "A12345")
 end
