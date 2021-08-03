@@ -1,0 +1,15 @@
+<h1>New Post</h1>
+
+<%= form_with model: @post do |form| %>
+  <div>
+    <%= form.text_field :title, placeholder: "Your title!" %>
+  </div>
+
+  <div>
+    <%= form.text_area :body, placeholder: "What is going on right now?" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

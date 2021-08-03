@@ -21,12 +21,16 @@
   <% end %>
 <% end %>
 
-<h3>
-  <div>
-    You are currently logged in as <%= @user.first_name %></br>
-    <%= link_to "Logout here", destroy_user_session_path, method: :delete %>
-  </div>
-</h3>
+<h3>Latest Posts</h3>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.title, post_path(post) %>
+    </li>
+  <% end %>
+</ul>
+
 
 <h3> Latest Users </h3>
   <div>
@@ -40,5 +44,12 @@
             <%= form.submit "Send Friend Request" %>
       <% end %>
     <% end %>
+  </div>
+</h3>
+
+<h3>
+  <div>
+    You are currently logged in as <%= @user.first_name %></br>
+    <%= link_to "Logout here", destroy_user_session_path, method: :delete %>
   </div>
 </h3>

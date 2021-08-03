@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @users = User.last(20)
 
     @friend_ids = @user.friendships.map(&:friend_id)
+
+    @posts = Post.last(10)
   end
 
   def show

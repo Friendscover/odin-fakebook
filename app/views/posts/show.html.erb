@@ -1,0 +1,7 @@
+<h3><%= @post.title %></h3>
+
+by: <%= @post.user.first_name %>
+
+<p><%= @post.body %></p>
+
+<div><%= link_to "Back to your timeline", posts_path %></div>

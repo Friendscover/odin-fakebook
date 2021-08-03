@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :friendships, only: %i[update]
+  resources :posts, only: %i[index show new create]
 
   root 'users#index'
 end
