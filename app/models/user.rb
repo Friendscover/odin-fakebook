@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
 
   has_many :posts
-
+  has_many :comments
   # @book = @author.books.build(published_at: Time.now,
   # book_number: "A12345")
 end

@@ -1,9 +1,4 @@
-<h1> Welcome <%= @user.first_name %> </h1>
-
-<p>
-  <%= @user.first_name %>
-  <%= @user.email %></br>
-</p>
+<h1> Welcome <%= @user.first_name %>! </h1>
 
 <%= render "shared/friendships", :user => @user %>
 
