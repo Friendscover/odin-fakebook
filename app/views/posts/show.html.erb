@@ -4,4 +4,30 @@ by: <%= @post.user.first_name %>
 
 <p><%= @post.body %></p>
 
+<h3> Comments </h3>
+
+<p>
+  <% @post.comments.each do |comment| %>
+    <div>
+      <%= comment.body %></br>
+      by: <%= comment.commenter.first_name %>
+    </div>
+  <% end %>
+</p>
+
+
+
+<h3>Add a comment:</h3>
+
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
 <div><%= link_to "Back to your timeline", posts_path %></div>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :friendships, only: %i[update]
 
   resources :posts, only: %i[index show new create] do
-    resources :comments, only %i[show new create]
+    resources :comments, only: %i[show new create]
   end
 
   root 'users#index'
