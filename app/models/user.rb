@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+  has_many :likes
   # @book = @author.books.build(published_at: Time.now,
   # book_number: "A12345")
 end
