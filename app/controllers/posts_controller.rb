@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+    @user_likes = @post.likes.map(&:user_id)
   end
 
   def new

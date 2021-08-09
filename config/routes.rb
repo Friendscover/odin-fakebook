@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :comments, only: %i[show new create]
   end
 
+  resources :likes
   root 'users#index'
 end
