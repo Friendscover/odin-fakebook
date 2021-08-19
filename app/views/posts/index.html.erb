@@ -2,8 +2,7 @@
 
 <ul>
   <% @posts.each do |post| %>
-    <li>
-      <%= link_to post.title, post_path(post) %>
-    </li>
+    <%= render 'shared/post_content', :post => post %>
+    <%= link_to "View this post!", post_path(post) %>
   <% end %>
 </ul>

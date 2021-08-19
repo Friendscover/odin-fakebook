@@ -36,7 +36,7 @@ user.each do |u|
   random_user = user.sample until random_user.first_name != u.first_name
   u.friendships.build(friend_id: random_user.id, accepted_request: false).save
 
-  u.posts.build(title: post_title.sample, body: ('a'..'z').to_a.sample(20).join).save
+  u.posts.build(title: post_title.sample, body: ('a'..'z').to_a.sample(100).join).save
   # this creates comments after a post but it should have its own loop
   # therefore more posts are created to comment on
   u.likes.build(user_id: user.sample.id, post_id: post.sample.id).save

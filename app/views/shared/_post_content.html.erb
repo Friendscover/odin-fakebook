@@ -1,0 +1,18 @@
+<li>
+  <h3><%= link_to post.title, post_path(post) %></h3>
+  by: <%= post.user.first_name %>
+
+  <p><%= post.body %></p>
+  <p>
+  <% if post.comments.any? %>
+    <h3> Comments: </h3>
+    <% post.comments.each do |comment| %>
+      <div>
+        <%= comment.body %></br>
+        by: <%= comment.commenter.first_name %>
+      </div>
+    <% end %>
+  <% end %>
+  </p>
+    <h4> Total Likes: <%= post.likes.count %></h4>
+</li>
