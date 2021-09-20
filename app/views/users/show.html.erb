@@ -3,3 +3,19 @@
 <% else %>
   <h1> This is the profile of <%= @user.first_name %> </h1>
 <% end %>
+
+<%= @user.avatar %>
+
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar %>
+<% end %>
+
+<%= form_with model: @user do |form| %>
+  <div>
+    <%= form.file_field :avatar %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
