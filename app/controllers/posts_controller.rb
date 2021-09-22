@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     @friendships = @friendships.map(&:friend_id)
     @friendships += @friends.map(&:friend_id)
 
-
     @posts = Post.includes(:comments).where(user_id: current_user.id).or(Post.where(user_id: @friendships)).limit(10).order(created_at: :desc)
   end
 
