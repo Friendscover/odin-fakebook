@@ -5,8 +5,12 @@
 <% end %>
 
 <% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar %>
+  <div>
+    <%= image_tag @user.avatar %>
+  </div>
 <% end %>
+
+<div><%= @user.info if @user.info %></div>
 
 <h2> Recent Posts </h2>
 <% @posts.each do |post| %>
@@ -16,12 +20,16 @@
 <% end %>
 
 <% if current_user.id == params[:id].to_i %>
+  <h2> Update your profile here! </h2>
   <%= form_with model: @user do |form| %>
+    <div>
+      <%= form.text_area :info %>
+    </div>
     <div>
       <%= form.file_field :avatar %>
     </div>
     <div>
-      <%= form.submit "Update your Profile Pic!" %>
+      <%= form.submit "Update your Profile Information!" %>
     </div>
   <% end %>
 <% end %>
