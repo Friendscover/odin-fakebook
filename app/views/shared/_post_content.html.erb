@@ -1,6 +1,6 @@
 <li>
   <h3><%= link_to post.title, post_path(post) %></h3>
-  by: <%= post.user.first_name %>
+  by: <%= link_to post.user.first_name, user_path(post.user) %>
 
   <p><%= post.body %></p>
   <p>
