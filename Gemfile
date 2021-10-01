@@ -61,3 +61,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # use devise for auth and ominauth in facebook
 gem 'devise'
+gem 'omniauth-facebook', '~> 8.0'
+gem 'omniauth-rails_csrf_protection'
