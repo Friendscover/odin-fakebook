@@ -13,14 +13,26 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <% if current_user %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <%= link_to "Your Profile", user_path(current_user) %>
-        <%= link_to "Create a Post", new_post_path %>
-        <%= link_to "Timeline", posts_path %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path %>
+        <button class="button is-primary is-medium">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        </button>
+        <button class="button is-primary is-medium"
+          <%= link_to "Your Profile", user_path(current_user) %>
+        </button>
+        <button class="button is-primary is-medium">
+          <%= link_to "Create a Post", new_post_path %>
+        </button>
+        <button class="button is-primary is-medium">
+          <%= link_to "Timeline", posts_path %>
+        </button>
+        <% else %>
+        <button class="button is-primary is-medium">
+          <%= link_to "Login", new_user_session_path %>
+        </button>
       <% end %>
-      <%= link_to "Home", root_path %>
+      <button class="button is-primary is-medium">
+        <%= link_to "Home", root_path %>
+      </button>
     </nav>
     <%= yield %>
   </body>
