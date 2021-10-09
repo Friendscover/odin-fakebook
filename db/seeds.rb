@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts 'Creating random data. Please hold the line.'
+
 ## drop table to before seeding new items
 User.delete_all
 Friendship.delete_all
@@ -13,21 +15,32 @@ Like.delete_all
 Comment.delete_all
 Post.delete_all
 
-first_name = %w[toby ybot user tots jonas]
-last_name = %w[oby bot ser ots onas]
-email = ['toby@example.com', 'ybot@example.com', 'user@example.com', 'tots@example.com', 'jonas@example.com']
-post_title = ['Hello World!', 'Hello Ruby!', 'Hello Rails!', 'Hello Ruby on Rails!']
-
+first_name = %w[toby ybot user tots jonas obas enos random hes dont]
+last_name = %w[oby bot ser ots onas bas nos andom esss ont]
 # create user
 first_name.each_with_index do |_f, index|
   User.create(first_name: first_name[index - 1],
               last_name: last_name[index - 1],
-              email: email[index - 1],
+              email: "#{first_name[index - 1]}@example.com",
               password: '123456').save
 end
 
 user = User.all
 post = Post.all
+
+# create 100 Posts
+100.times do
+  random_user = user.sample
+
+  random_user.posts.build(title: ('a'..'z').to_a.sample(50).join, body: ('a'..'z').to_a.sample(1000).join).save
+end
+
+# create 10000 comments on random posts
+10_000.times do
+  random_post = post.sample
+
+  random_post.comments.build(commenter_id: user.sample.id, body: ('a'..'z').to_a.sample(50).join, post_id: post.sample.id).save
+end
 
 # create friendships, likes, posts, comments to test associations
 user.each do |u|
@@ -36,9 +49,7 @@ user.each do |u|
   random_user = user.sample until random_user.first_name != u.first_name
   u.friendships.build(friend_id: random_user.id, accepted_request: false).save
 
-  u.posts.build(title: post_title.sample, body: ('a'..'z').to_a.sample(100).join).save
   # this creates comments after a post but it should have its own loop
   # therefore more posts are created to comment on
   u.likes.build(user_id: user.sample.id, post_id: post.sample.id).save
-  Comment.new(commenter_id: user.sample.id, body: ('a'..'z').to_a.sample(20).join, post_id: post.sample.id).save
 end
