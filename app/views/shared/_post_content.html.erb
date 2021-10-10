@@ -1,22 +1,22 @@
-<div class="columns is-centered is-size-2">
+<div class="columns is-centered is-size-2 box">
   <%= link_to post.title, post_path(post) %>
 </div>
 
-<p class="columns is-centered is-size-4">
+<p class="columns is-centered is-size-5">
   by: <%= link_to post.user.first_name, user_path(post.user) %>
 </p>
-<div class="columns is-centered">
+<div class="columns is-centered is-size-2">
   <%= post.body %>
 </div>
 <% if post.comments.any? %>
-<div class="columns is-centered is-size-4">
+<div class="columns is-centered is-size-4 mt-5">
   Comments:
 </div>
   <% post.comments.each do |comment| %>
-      <div class="columns is-centered"><%= comment.body %><br/></div>
-      <div class="columns is-centered">by: <%= comment.commenter.first_name %></div>
+      <div class="columns is-centered mt-3"><%= comment.body %></div>
+      <div class="columns is-centered mt-1 is-italic">by: <%= comment.commenter.first_name %></div>
   <% end %>
 <% end %>
-<div class="columns is-centered">
+<div class="columns is-centered is-size-4 mt-4">
   Total Likes: <%= post.likes.count %>
 </div>
