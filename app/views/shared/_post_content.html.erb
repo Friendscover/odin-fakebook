@@ -1,18 +1,22 @@
-<li>
-  <h3><%= link_to post.title, post_path(post) %></h3>
-  by: <%= link_to post.user.first_name, user_path(post.user) %>
+<div class="columns is-centered is-size-2">
+  <%= link_to post.title, post_path(post) %>
+</div>
 
-  <p><%= post.body %></p>
-  <p>
-  <% if post.comments.any? %>
-    <h3> Comments: </h3>
-    <% post.comments.each do |comment| %>
-      <div>
-        <%= comment.body %></br>
-        by: <%= comment.commenter.first_name %>
-      </div>
-    <% end %>
+<p class="columns is-centered is-size-4">
+  by: <%= link_to post.user.first_name, user_path(post.user) %>
+</p>
+<div class="columns is-centered">
+  <%= post.body %>
+</div>
+<% if post.comments.any? %>
+<div class="columns is-centered is-size-4">
+  Comments:
+</div>
+  <% post.comments.each do |comment| %>
+      <div class="columns is-centered"><%= comment.body %><br/></div>
+      <div class="columns is-centered">by: <%= comment.commenter.first_name %></div>
   <% end %>
-  </p>
-    <h4> Total Likes: <%= post.likes.count %></h4>
-</li>
+<% end %>
+<div class="columns is-centered">
+  Total Likes: <%= post.likes.count %>
+</div>
