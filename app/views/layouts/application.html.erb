@@ -13,26 +13,14 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <% if current_user %>
-        <button class="button is-danger is-small">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        </button>
-        <button class="button is-link is-small">
-          <%= link_to "Your Profile", user_path(current_user) %>
-        </button>
-        <button class="button is-link is-small">
-          <%= link_to "Create a Post", new_post_path %>
-        </button>
-        <button class="button is-link is-small">
-          <%= link_to "Timeline", posts_path %>
-        </button>
-        <% else %>
-        <button class="button is-danger is-small">
-          <%= link_to "Login", new_user_session_path %>
-        </button>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button is-danger is-small m-1' %>
+        <%= link_to "Your Profile", user_path(current_user), :class => 'button is-link is-small m-1' %>
+        <%= link_to "Create a Post", new_post_path, :class => 'button is-link is-small m-1'%>
+        <%= link_to "Timeline", posts_path, :class => 'button is-link is-small m-1' %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, :class => 'button is-danger is-small m-1' %>
       <% end %>
-      <button class="button is-primary is-small">
-        <%= link_to "Home", root_path %>
-      </button>
+        <%= link_to "Home", root_path, :class => 'button is-primary is-small m-1' %>
     </nav>
     <%= yield %>
   </body>
