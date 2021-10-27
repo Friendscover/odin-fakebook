@@ -1,35 +1,39 @@
 <% if current_user.id == params[:id].to_i %>
-  <h1> This is your profile, <%= @user.first_name %></h1>
+  <h1 class="box columns is-centered is-size-4"> This is your profile, <%= @user.first_name %>!</h1>
 <% else %>
-  <h1> This is the profile of <%= @user.first_name %> </h1>
+  <h1 class="box columns is-centered is-size-4"> This is the profile of <%= @user.first_name %>!</h1>
 <% end %>
 
 <% if @user.avatar.attached? %>
-  <div>
+  <div class="columns is-centered is-round mt-4">
     <%= image_tag @user.avatar %>
   </div>
 <% end %>
 
-<div><%= @user.info if @user.info %></div>
+<div class="columns is-centered">
+  <%= @user.info if @user.info %>
+</div>
 
-<h2> Recent Posts </h2>
+<h2 class="box columns is-centered is-size-4"> Recent Posts </h2>
 <% @posts.each do |post| %>
   <li>
-    <ul><%= link_to post.title, post_path(post) %></ul>
+    <ul class="columns is-centered mt-4">
+      <%= link_to post.title, post_path(post) %>
+    </ul>
   </li>
 <% end %>
 
 <% if current_user.id == params[:id].to_i %>
-  <h2> Update your profile here! </h2>
+  <h2 class="box columns is-centered is-size-4 mt-6"> Update your profile here! </h2>
   <%= form_with model: @user do |form| %>
-    <div>
-      <%= form.text_area :info %>
+    <div class="columns is-centered mt-4">
+      <%= form.text_area :info, placeholder: 'Write something about yourself!' %>
     </div>
-    <div>
+    <div class="columns is-centered mt-4 file">
       <%= form.file_field :avatar %>
     </div>
-    <div>
-      <%= form.submit "Update your Profile Information!" %>
+    <div class="columns is-centered mt-4">
+      <%= form.submit "Update your Profile Information!", :class => 'button is-primary' %>
     </div>
   <% end %>
 <% end %>
