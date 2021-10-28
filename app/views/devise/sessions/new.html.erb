@@ -1,25 +1,23 @@
-<h2>Log in</h2>
+<h2 class="columns is-centered is-size-3 box">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field columns is-centered m-4">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Your email adress!" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="field columns is-centered m-4">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Your password!" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field columns is-centered m-4">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="actions columns is-centered">
+    <%= f.submit "Log in", :class => 'button is-primary is-small m-4' %>
   </div>
 <% end %>
 

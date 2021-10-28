@@ -13,14 +13,14 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <% if current_user %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <%= link_to "Your Profile", user_path(current_user) %>
-        <%= link_to "Create a Post", new_post_path %>
-        <%= link_to "Timeline", posts_path %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'button is-danger is-small m-1' %>
+        <%= link_to "Your Profile", user_path(current_user), :class => 'button is-link is-small m-1' %>
+        <%= link_to "Create a Post", new_post_path, :class => 'button is-link is-small m-1'%>
+        <%= link_to "Timeline", posts_path, :class => 'button is-link is-small m-1' %>
       <% else %>
-        <%= link_to "Login", new_user_session_path %>
+        <%= link_to "Login", new_user_session_path, :class => 'button is-danger is-small m-1' %>
       <% end %>
-      <%= link_to "Home", root_path %>
+        <%= link_to "Home", root_path, :class => 'button is-primary is-small m-1' %>
     </nav>
     <%= yield %>
   </body>

@@ -1,8 +1,10 @@
-<h1>Posts</h1>
+<h1 class="columns is-centered is-size-1 has-text-weight-bold">Recent Posts</h1>
 
-<ul>
+<div>
   <% @posts.each do |post| %>
     <%= render 'shared/post_content', :post => post %>
-    <%= link_to "View this post!", post_path(post) %>
+    <div class="columns is-centered">
+      <%= link_to "View this post!", post_path(post) %>
+    </div>
   <% end %>
-</ul>
+</div>

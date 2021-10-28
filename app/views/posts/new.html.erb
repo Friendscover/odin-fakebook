@@ -1,15 +1,16 @@
-<h1>New Post</h1>
+<h1 class="columns is-centered is-size-1 has-text-weight-bold>">Write a new Post</h1>
 
 <%= form_with model: @post do |form| %>
-  <div>
+  <div class="columns is-centered margin-bot">
     <%= form.text_field :title, placeholder: "Your title!" %>
   </div>
 
-  <div>
+  <div class="columns is-centered mt-4">
     <%= form.text_area :body, placeholder: "What is going on right now?" %>
   </div>
+  
 
-  <div>
-    <%= form.submit %>
+  <div class="columns is-centered mt-4">
+    <%= form.submit :class => 'button is-primary' %>
   </div>
 <% end %>

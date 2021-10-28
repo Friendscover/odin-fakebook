@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ @import "bulma.css";
+
+ button a:visited, button a:link {
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-right: 10px;
+}
